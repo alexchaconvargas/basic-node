@@ -25,6 +25,40 @@ var expressLogFile = fs.createWriteStream('./logs/express.log', {flags: 'a'});
 // routes ======================================================================
 require('./app/routes.js')(app);
 
+// DEPRECATED ROUTES============================================================
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.get('/index.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "index.html" );
+});
+
+app.get('/send-post.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "send-post.html" );
+});
+
+app.get('/file-upload.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "file-upload.html" );
+});
+
+app.get('/hello-world', function (req, res) {
+   res.sendFile( __dirname + "/" + "/public/hello-world.html" );
+});
+	
+//-----------REQUEST HANDLERS-----------
+
+app.get('/process_get', function (req, res) {
+   // Prepare output in JSON format
+   response = {
+       first_name:req.query.first_name,
+       last_name:req.query.last_name
+   };
+   console.log(response);
+   res.end(JSON.stringify(response));
+});
+
+
 //-----------SETTING UP SERVER-----------
 app.listen(port);
 console.log("App listening on port " + port);
