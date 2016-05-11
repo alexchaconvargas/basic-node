@@ -1,0 +1,21 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "mocha": "^2.4.5",
+    "mongoose": "^4.4.16",
+    "morgan": "^1.7.0",
+    "multer": "^1.1.0",
+    "should": "^8.3.1"
+  }
+}

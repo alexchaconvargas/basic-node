@@ -1,33 +1,38 @@
-var assert = require('chai').assert;
-var server = require('../app/server');
-var http = require('http');
+var server = require('../server');
+var assert = require('assert'),
+    http = require('http');
 
-describe('/', function () {
-	before(function () {
-	server.listen(8000);
-	});
+describe('server', function () {
+  before(function () {
+    server.listen(3000);
+  });
 
-	after(function () {
-	server.close();
-		});
-	it('should return 200', function (done) {
-		http.get('http://localhost:8000', function (res) {
-		  assert.equal(200, res.statusCode);
-		  done();
-		});
-	});
+  after(function () {
+    server.close();
+  });
+});
 
-	it('should say "Hello, world!"', function (done) {
-		http.get('http://localhost:8000', function (res) {
-		  var data = '';
-			res.on('data', function (chunk) {
-				data += chunk;
-			});
 
-		  	res.on('end', function () {
-			    assert.equal('<html><body><h1>Hello, World!</h1></body></html>', data);
-			    done();
-		  	});
-	});
-	});
+describe('Basic express server', function () {
+  it('should return 200', function (done) {
+    http.get('http://localhost:3000', function (res) {
+      assert.equal(200, res.statusCode);
+      done();
+    });
+  });
+
+  it('should say "Hello, world!"', function (done) {
+    http.get('http://localhost:3000/hello-world', function (res) {
+      var data = '';
+
+      res.on('data', function (chunk) {
+        data += chunk;
+      });
+
+      res.on('end', function () {
+        assert.equal('Hello World!\n', data);
+        done();
+      });
+    });
+  });
 });
