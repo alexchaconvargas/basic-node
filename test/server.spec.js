@@ -12,7 +12,6 @@ describe('server', function () {
   });
 });
 
-
 describe('Basic express server', function () {
   it('should return 200', function (done) {
     http.get('http://localhost:3000', function (res) {
@@ -30,7 +29,7 @@ describe('Basic express server', function () {
       });
 
       res.on('end', function () {
-        assert.equal('Hello World!\n', data);
+        assert.equal('Hello World!', data);
         done();
       });
     });
