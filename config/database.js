@@ -1,3 +1,20 @@
 module.exports = {
-    url : 'mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'
+    url : 'mongodb://alex:alex@localhost:27017/express'
 };
+
+
+
+/*
+ -------	CREAR USUARIO EN LA BBDD  -----------
+
+ Recordar antes hacer use <nombreDB> para que el usuario sea de esa BBDD
+db.createUser(
+   {
+     user: "alex",
+     pwd: "alex",
+     roles:
+       [
+         { role: "readWrite", db: "express" }
+       ]
+   }
+)*/
