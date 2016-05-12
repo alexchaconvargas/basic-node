@@ -12,3 +12,10 @@ node_js:
   - "0.8"
   - "0.6"
   - "iojs"
+
+services:
+  - mongodb
+
+before_script:
+  - sleep 15
+  - mongo express --eval 'db.addUser("alex", "alex");'
