@@ -6,12 +6,13 @@ var mongoose = require('mongoose');            // mongoose for mongodb
 var port     = process.env.PORT || 3000; 		// set the port
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
-var database = require('./config/database');
+var config = require('./config/config');
 var fs = require('fs');
 
 //-----------LOAD CONFIG-----------
 
-mongoose.connect(database.url);
+app.set('dbUrl', config.db[app.settings.env]);
+mongoose.connect(app.get('dbUrl'));
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));                                         // log every request to the console
